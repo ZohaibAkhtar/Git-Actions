@@ -28,4 +28,4 @@ jobs:
     - name: set-origin
       run: git remote set-url origin https://github.com/ZohaibAkhtar/Hello-World.git
     - name: SSH Deploy
-      run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ variables.SSH_USERNAME }}@${{ variables.SSH_HOST }} "cd ${{ secrets.REMOTE_DEPLOY_PATH }} && git pull origin main && ./deploy.sh"
+      run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} "cd ${{ secrets.REMOTE_DEPLOY_PATH }} && git pull origin main && ./deploy.sh"
