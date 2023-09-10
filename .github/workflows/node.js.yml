@@ -19,7 +19,7 @@ jobs:
                   ssh-private-key: |
                         ${{ secrets.SSH_PRIVATE_KEY }}
     - uses: actions/checkout@v3
-    - name: Setup SSH Key
-      run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+#    - name: Setup SSH Key
+#      run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
     - name: SSH Deploy
-      run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.REMOTE_DEPLOY_PATH }} && git pull origin main && ./deploy.sh"
+      run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.REMOTE_DEPLOY_PATH }} && git pull origin main && ./deploy.sh"
