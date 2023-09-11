@@ -31,7 +31,7 @@ jobs:
     - name: create file with secret variable value and send it to destination
       run: |
             echo "${{ secrets.SECRET_VALUE }}" > ~/txt.txt
-            rsync ~/txt.txt -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ vars.SSH_USERNAME }}@${{ vars.SSH_HOST }}:${{ secrets.REMOTE_DEPLOY_PATH }}
+            rsync -arzvh ~/txt.txt -e 'ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no' ${{ vars.SSH_USERNAME }}@${{ vars.SSH_HOST }}:${{ secrets.REMOTE_DEPLOY_PATH }}
     - name: SSH Deploy
       run: |
             ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ vars.SSH_USERNAME }}@${{ vars.SSH_HOST }} "cd ${{ secrets.REMOTE_DEPLOY_PATH }} && git pull origin main && ./deploy.sh"
