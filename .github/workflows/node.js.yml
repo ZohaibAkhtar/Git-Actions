@@ -30,7 +30,7 @@ jobs:
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
     - name: update-index-file
       run: |
-            sed -i '1s/.*/const secretValue = ${{ secrets.SECRET_VALUE }}/' index.js
+            sed -i '1s/.*/const secretValue = $SECRET_VALUE/' index.js
             echo ${{ secrets.SECRET_VALUE }}
       
     - name: set-origin
