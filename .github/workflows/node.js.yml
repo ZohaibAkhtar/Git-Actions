@@ -41,7 +41,7 @@ jobs:
             git config --global user.name ZohaibAkhtar
             git add index.js
             git commit -m "update index.js with secretValue"
-            git push origin main 
+            git push origin master 
     - name: SSH Deploy
       run: |
             ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ vars.SSH_USERNAME }}@${{ vars.SSH_HOST }} "cd ${{ secrets.REMOTE_DEPLOY_PATH }} && git pull origin main && ./deploy.sh"
