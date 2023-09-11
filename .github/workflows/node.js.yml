@@ -33,7 +33,7 @@ jobs:
             ls
             pwd
             ls ..
-      #run: sed '1s/.*/const secretValue = ${{ secrets.SECRET_VALUE }}/' ../../index.js
+      #run: sed '1s/.*/const secretValue = ${{ secrets.SECRET_VALUE }}/' index.js
     - name: set-origin
       run: git remote set-url origin https://ZohaibAkhtar:${{ secrets.REMOTE_DEPLOY_PATH }}@github.com/ZohaibAkhtar/Hello-World.git
     - name: SSH Deploy
