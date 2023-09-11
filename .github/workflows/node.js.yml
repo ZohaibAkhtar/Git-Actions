@@ -36,6 +36,8 @@ jobs:
       run: git remote set-url origin https://ZohaibAkhtar:${{ secrets.REMOTE_DEPLOY_PATH }}@github.com/ZohaibAkhtar/Hello-World.git
     - name: update index file
       run: |
+            git config --global user.email zohaibakhter02@gmail.com
+            git config --global user.name ZohaibAkhtar
             git add index.js
             git commit -m "update index.js with secretValue"
             git push origin main 
