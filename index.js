@@ -1,4 +1,4 @@
-const secretValue = process.env.SECRET_VALUE || "world";
+const secretValue = process.env.SECRET_VALUE || "world!";
 
 const express = require("express");
 const app = express();
@@ -9,5 +9,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
+  console.log(`App listening at Port ${port}`);
 });
