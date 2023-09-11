@@ -29,7 +29,10 @@ jobs:
             mkdir -p ~/.ssh
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
     - name: update-index-file
-      run: sed -i '1s/.*/const secretValue = ${{ secrets.SECRET_VALUE }}/' index.js
+      run: |
+            sed -i '1s/.*/const secretValue = ${{ secrets.SECRET_VALUE }}/' index.js
+            echo ${{ secrets.SECRET_VALUE }}
+      
     - name: set-origin
       run: git remote set-url origin https://ZohaibAkhtar:${{ secrets.REMOTE_DEPLOY_PATH }}@github.com/ZohaibAkhtar/Hello-World.git
     - name: SSH Deploy
