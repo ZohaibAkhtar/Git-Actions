@@ -1,4 +1,4 @@
-const secretValue = process.env.SECRET_VALUE || "world!";
+const secretValue = process.env.SECRET_VALUE || "world";
 
 const express = require("express");
 const app = express();
