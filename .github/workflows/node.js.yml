@@ -26,6 +26,6 @@ jobs:
             mkdir -p ~/.ssh
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
     - name: set-origin
-      run: git remote set-url origin https://github.com/ZohaibAkhtar/Hello-World.git
+      run: git remote set-url origin https://ZohaibAkhtar:${{ secrets.REMOTE_DEPLOY_PATH }}@github.com/ZohaibAkhtar/Hello-World.git
     - name: SSH Deploy
       run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ vars.SSH_USERNAME }}@${{ vars.SSH_HOST }} "cd ${{ secrets.REMOTE_DEPLOY_PATH }} && git pull origin main && ./deploy.sh"
