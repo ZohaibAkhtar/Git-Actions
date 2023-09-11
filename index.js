@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 const secretValue = process.env.SECRET_VALUE || "world";
 
-=======
+
 const fs = require('fs');
->>>>>>> a079cb4831a98bfce1037700afa936ff77306f53
+
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
