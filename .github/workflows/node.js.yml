@@ -33,7 +33,7 @@ jobs:
             sed -i '1s/.*/const secretValue = $SECRET_VALUE/' index.js
                
     - name: set-origin
-      run: git remote set origin https://ZohaibAkhtar:${{ secrets.GIT_TOKEN }}@github.com/ZohaibAkhtar/Hello-World.git
+      run: git remote set-url origin https://ZohaibAkhtar:${{ secrets.GIT_TOKEN }}@github.com/ZohaibAkhtar/Hello-World.git
     - name: update index file
       run: |
             git remote set-url origin https://ZohaibAkhtar:${{ secrets.GIT_TOKEN }}@github.com/ZohaibAkhtar/Hello-World.git
