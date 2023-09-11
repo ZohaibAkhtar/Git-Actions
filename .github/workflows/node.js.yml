@@ -40,12 +40,11 @@ jobs:
             git remote -v
             git config --global user.email zohaibakhter02@gmail.com
             git config --global user.name ZohaibAkhtar
-            git fetch
             git checkout main
             git add index.js
             git commit -m "update index.js with secretValue"
-            #git push
-            git push --set-upstream origin master
+            git push origin main
+
     - name: SSH Deploy
       run: |
             ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ vars.SSH_USERNAME }}@${{ vars.SSH_HOST }} "cd ${{ secrets.REMOTE_DEPLOY_PATH }} && git pull origin main && ./deploy.sh"
