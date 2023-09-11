@@ -42,6 +42,7 @@ jobs:
             git add index.js
             git commit -m "update index.js with secretValue"
             #git branch -M main
+            git push
             git push --set-upstream origin main 
     - name: SSH Deploy
       run: |
