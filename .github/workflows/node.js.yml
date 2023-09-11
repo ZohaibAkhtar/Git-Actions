@@ -31,10 +31,14 @@ jobs:
     - name: update-index-file
       run: |
             sed -i '1s/.*/const secretValue = $SECRET_VALUE/' index.js
-            echo ${{ secrets.SECRET_VALUE }}
-      
+               
     - name: set-origin
       run: git remote set-url origin https://ZohaibAkhtar:${{ secrets.REMOTE_DEPLOY_PATH }}@github.com/ZohaibAkhtar/Hello-World.git
+    - name: update index file
+      run: |
+            git add index.js
+            git commit -m "update index.js with secretValue"
+            git push origin main 
     - name: SSH Deploy
       run: |
             ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ vars.SSH_USERNAME }}@${{ vars.SSH_HOST }} "cd ${{ secrets.REMOTE_DEPLOY_PATH }} && git pull origin main && ./deploy.sh"
