@@ -43,8 +43,8 @@ jobs:
             git add index.js
             git commit -m "update index.js with secretValue"
             #git branch -M main
-            git push
-            #git push --set-upstream origin main 
+            #git push
+            git push origin main 
     - name: SSH Deploy
       run: |
             ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ vars.SSH_USERNAME }}@${{ vars.SSH_HOST }} "cd ${{ secrets.REMOTE_DEPLOY_PATH }} && git pull origin main && ./deploy.sh"
